@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+  <h2>Admin Dashboard</h2>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Mobile</th>
+        <th>Guests</th>
+        <th>Attending</th>
+      </tr>
+    </thead>
+    <tbody>
+
+    {% for entry in rsvps %}
+    <tr>
+      <td>{{ entry.name }}</td>
+      <td>{{ entry.mobile }}</td>
+      <td>{{ entry.guests }}</td>
+      <td>{{ entry.attending }}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+
+  <br>
+  <a href="/logout">Logout</a>
+</div>
+{% endblock %}

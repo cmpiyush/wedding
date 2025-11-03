@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+  <h2>RSVP</h2>
+  <form method="POST" action="/rsvp">
+    <label>Name:</label>
+    <input type="text" name="name" required>
+
+    <label>Mobile Number:</label>
+    <input type="text" name="mobile" pattern="[0-9]{10}" placeholder="10-digit number" required>
+
+    <label>Number of Guests:</label>
+    <input type="number" name="guests" min="1" max="10" required>
+
+    <label>Will you attend?</label>
+    <div class="radio-group mb-2">
+        <label class="form-check-label mr-3 p-2">Yes</label>
+        <input type="radio" class="form-check-input p-2" name="attending" value="Yes" required>
+        <label class="form-check-label mr-3 p-2">No</label>
+        <input type="radio" class="form-check-input p-2" name="attending" value="No" required>
+    </div>
+    <button type="submit" class="btn btn-info">Submit</button>
+  </form>
+</div>
+{% endblock %}
+

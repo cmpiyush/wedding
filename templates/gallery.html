@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+  <div class="container py-5 text-center">
+    <h2>Gallery</h2>
+    <div class="gallery">
+      <img src="{{ url_for('static', filename='img/1.jpg') }}" width="400" height="300" alt="Couple photo">
+      <img src="{{ url_for('static', filename='img/2.jpg') }}" width="400" height="300" alt="Engagement">
+      <img src="{{ url_for('static', filename='img/3.jpg') }}" width="400" height="300" alt="Pre-wedding shoot">
+    </div>
+  </div>
+{% endblock %}
