@@ -49,6 +49,11 @@ body {
   margin-top: 0.5rem;
   animation: fadeInUp 2s ease-in-out;
 }
+.responsive {
+  max-width: 100%;
+  height: auto;
+  padding: 10px;
+}
 
 /* ✨ Animations */
 @keyframes fadeInDown {
