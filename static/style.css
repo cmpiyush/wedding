@@ -1,12 +1,18 @@
 
 body {
-  font-family: "Poppins", sans-serif;
-  background-color: #fff;
+  font-family: 'Open Sans', sans-serif;
+  background: linear-gradient(135deg, #fff 60%, #ffe4ec);
   color: #333;
   margin: 0;
   padding: 0;
   overflow-x: hidden;
 }
+
+h1, h2 {
+  font-family: 'Dancing Script', cursive;
+  color: #e91e63;
+}
+
 
 /* 🌸 Header Banner */
 .header-banner {

@@ -4,9 +4,14 @@
   <meta charset="UTF-8" >
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Open+Sans&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <title>Seema &amp; Rajesh Wedding</title>
+  <title>Seema &amp; Piyush</title>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>AOS.init();</script>
+
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
@@ -23,6 +28,7 @@
       <a href="{{ url_for('events') }}" class="btn btn-primary m-4">Events</a>
       <a href="{{ url_for('gallery') }}" class="btn btn-secondary m-4">Gallery</a>
       <a href="{{ url_for('rsvp') }}" class="btn btn-success m-4">RSVP</a>
+      <div id="countdown"></div>
     </div>
   </header>
 
@@ -38,8 +44,26 @@
   </main>
 
   <footer>
-    <p>Made with ❤️ for Dr. Seema &amp; Dr. Chandramani | © 2025</p>
+    <p>Made with ❤️ for Seema &amp; Piyush | © 2025</p>
   </footer>
+
+  <script>
+  const weddingDate = new Date("2025-12-05T00:00:00").getTime();
+  setInterval(() => {
+    const now = new Date().getTime();
+    const diff = weddingDate - now;
+    const d = Math.floor(diff / (1000*60*60*24));
+    document.getElementById("countdown").innerHTML = `${d} days to go! 💖`;
+  }, 1000);
+
+  const flashMessages = document.querySelectorAll('.flash');
+  flashMessages.forEach(msg => {
+    setTimeout(() => {
+      msg.style.display = 'none';
+    }, 3000);
+  });
+</script>
+
 
 </body>
 </html>
