@@ -3,45 +3,34 @@
 {% block content %}
     <div class="container py-5">
         <h2 class="text-center">Wedding Events</h2>
-                <div class="row">
-                        <div class="col-md-6 mb-4">
-                                <div class="card bg-dark text-white">
-                    <img src="static/img/menhdi.jpg" class="card-img" alt="Mehendi & Sangeet">
-                    <div class="card-img-overlay">
-                        <h5 class="card-title">Mehendi &amp; Sangeet</h5>
-                        <p class="card-text">Date: <span class="badge bg-primary">3 December 2025, 6 PM</span></p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 mb-4">
-                <div class="card bg-dark text-white">
-                    <img src="static/img/haldi.jpg" class="card-img" alt="Haldi Ceremony">
-                    <div class="card-img-overlay">
-                        <h5 class="card-title">Haldi Ceremony</h5>
-                        <p class="card-text">Date: <span class="badge bg-primary">4 December 2025, 04 PM</span></p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 mb-4">
-                <div class="card bg-dark text-white">
-                    <img src="static/img/wedding.jpg" class="card-img" alt="Wedding">
-                    <div class="card-img-overlay">
-                        <h5 class="card-title">Wedding</h5>
-                        <p class="card-text">Date: <span class="badge bg-primary">5 December 2025, 11:00 AM</span></p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 mb-4">
-                <div class="card bg-dark text-white">
-                    <img src="static/img/reception.jpg" class="card-img" alt="Reception">
-                    <div class="card-img-overlay">
-                        <h5 class="card-title">Reception</h5>
-                        <p class="card-text">Date: <span class="badge bg-primary">10 December 2025, 3:00 PM</span></p>
-                        <span>Image by <a href="https://pixabay.com/users/frankywinky-32109198/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=7658831">Frankly Winky</a> from <a href="https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=7658831">Pixabay</a></span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+        <div class="row" id="events-row"></div>
 
+        <script>
+            (function(){
+            const baseStatic = "{{ url_for('static', filename='') }}";
+            const events = [
+                { title: "Buddha Vandana", img: "img/buddha.jpg", alt: "Buddha", date: "30 November 2025, 11 AM", location: "Jagdishpur, Samastipur (Bihar)" },
+                { title: "Mehendi & Sangeet", img: "img/menhdi.jpg", alt: "Mehendi & Sangeet", date: "3 December 2025, 6 PM", location: "Garden" },
+                { title: "Haldi Ceremony", img: "img/haldi.jpg", alt: "Haldi Ceremony", date: "4 December 2025, 04 PM", location: "Courtyard" },
+                { title: "💍Wedding", img: "img/wedding.jpg", alt: "Wedding", date: "5 December 2025, 11:00 AM", location: "Main Hall" },
+                { title: "Reception", img: "img/reception.jpg", alt: "Reception", date: "10 December 2025, 3:00 PM", location: "Bhandara"}
+            ];
+
+            const row = document.getElementById('events-row');
+            row.innerHTML = events.map(e => `
+                <div class="col-md-6 mb-4">
+                <div class="card bg-dark text-white">
+                    <img src="${baseStatic}${e.img}" class="card-img" alt="${e.alt}">
+                    <div class="card-img-overlay">
+                    <h5 class="card-title">${e.title}</h5>
+                    <p class="card-text">Date: ${e.date}</p>
+                    <p class="card-text"> Location: ${e.location}</p>
+                    ${e.credit ? `<span>${e.credit}</span>` : ''}
+                    </div>
+                </div>
+                </div>
+            `).join('');
+            })();
+        </script>
+    </div>
 {% endblock %}
