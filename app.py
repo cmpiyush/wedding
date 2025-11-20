@@ -3,6 +3,7 @@ from pymongo import MongoClient
 from dotenv import load_dotenv
 import os
 import datetime
+from werkzeug.security import generate_password_hash, check_password_hash
 
 load_dotenv()
 app = Flask(__name__)
@@ -68,13 +69,9 @@ def rsvp():
 
     return render_template("rsvp.html")
 
-# Admin Login
-@app.route("/admin", methods=["GET", "POST"])
-def admin():
-    if "user" in session:
-        rsvps = list(rsvp_collection.find())
-        return render_template("admin.html", rsvps=rsvps)
-
+# Admin Login Page (GET = show form, POST = authenticate)
+@app.route("/admin_login", methods=["GET", "POST"])
+def admin_login():
     if request.method == "POST":
         username = request.form["username"]
         password = request.form["password"]
@@ -82,20 +79,22 @@ def admin():
             session["user"] = username
             return redirect(url_for("admin"))
         else:
-            flash("Invalid credentials", "danger")
+            return render_template("admin_login.html", error="Invalid credentials")
 
-    return '''
-    <div style="margin:50px">
-      <h2>Admin Login</h2>
-      <form method="POST">
-        <label>Username:</label><br>
-        <input type="text" name="username" required><br><br>
-        <label>Password:</label><br>
-        <input type="password" name="password" required><br><br>
-        <button type="submit">Login</button>
-      </form>
-    </div>
-    '''
+    # GET request → just show login page
+    return render_template("admin_login.html")
+
+
+# Admin Dashboard (requires login)
+@app.route("/admin")
+def admin():
+    if "user" not in session:
+        return redirect(url_for("admin_login"))
+
+    rsvps = list(rsvp_collection.find())
+    return render_template("admin.html", rsvps=rsvps)
+
+
 @app.route("/logout")
 def logout():
     session.pop("user", None)
@@ -104,6 +103,7 @@ def logout():
 
 
 if __name__ == "__main__":
+    debug = os.getenv("FLASK_DEBUG", "False") == "True"
     from os import environ
-    app.run(host="0.0.0.0", port=int(environ.get("PORT", 5000)))
+    app.run(host="0.0.0.0", port=int(environ.get("PORT", 5000)), debug=debug)
 
