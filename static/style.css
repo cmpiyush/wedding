@@ -1,11 +1,12 @@
-
 body {
   font-family: 'Open Sans', sans-serif;
   background: linear-gradient(135deg, #fff 60%, #ffe4ec);
-  color: #333;
-  margin: 0;
-  padding: 0;
   overflow-x: hidden;
+}
+
+.alert {
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 h1, h2 {
@@ -13,26 +14,20 @@ h1, h2 {
   color: #e91e63;
 }
 
+h3 {
+  color: #e91e63;
+}
 
 /* 🌸 Header Banner */
 .header-banner {
-  position: relative;
-  background-image: url("/static/img/header.jpg");
+  background-image: url("/static/img/header2.jpg");
   background-size: cover;
-  background-position: center;
-  height: 70vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  color: #fff;
-  overflow: hidden;
+  background-position: top;
   border-bottom: 4px solid #f8c8dc;
+  min-height: 100vh;
 }
 
-.header-banner .overlay {
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
+.overlay {
   background: rgba(231, 84, 128, 0.3);
   backdrop-filter: blur(2px);
 }
@@ -41,47 +36,80 @@ h1, h2 {
   position: relative;
   display: block;
   z-index: 2;
+  padding: 2rem 1rem;
+  text-align: center;
 }
 
 .header-content h1 {
-  font-size: 3rem;
+  font-size: clamp(1.8rem, 5vw, 3rem);
   letter-spacing: 2px;
   animation: fadeInDown 1.5s ease-in-out;
+  margin-bottom: 0.5rem;
+}
+
+.header-content h3 {
+  font-size: clamp(1rem, 3vw, 1.5rem);
+  margin-bottom: 0.5rem;
 }
 
 .header-content p {
-  font-size: 1.2rem;
+  font-size: clamp(0.9rem, 2.5vw, 1.2rem);
   color: #fff;
   margin-top: 0.5rem;
   animation: fadeInUp 2s ease-in-out;
 }
+
+.nav-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  margin: 1.5rem 0;
+}
+
 .responsive {
   max-width: 100%;
   height: auto;
   padding: 10px;
 }
-.countdown{
+
+.countdown {
   font-family: 'Poppins', sans-serif;
-  font-size: 2rem;
+  font-size: clamp(1.2rem, 4vw, 2rem);
   color: #eb0606;
   margin-top: 1rem;
   animation: fadeInUp 2s ease-in-out;
 }
-.card-img{
+
+.card {
+  background: #fff0f5;
+  border-style: none;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+  animation: fadeInUp 2s ease-in-out;
+  margin-bottom: 1rem;
+}
+
+.card-img {
   width: 100%;
   height: 250px;
   object-fit: cover;
 }
-.card-title{
+
+.card-title {
+  font-family: 'Tangerine', cursive;
   font-size: 1.5rem;
   font-weight: 600;
-  text-shadow: #d94775 1px 1px 5px;
+  text-shadow: #000000 1px 1px 5px;
 }
-.card-text{
+
+.card-text {
+  font-family: 'Alice';
   font-size: 1rem;
   font-weight: 500;
-  text-shadow: #d94775 1px 1px 5px;
+  text-shadow: #000000 1px 1px 5px;
 }
+
 /* ✨ Animations */
 @keyframes fadeInDown {
   from { opacity: 0; transform: translateY(-30px); }
@@ -116,12 +144,17 @@ h1, h2 {
   display: inline-block;
   background-color: #e75480;
   color: white;
-  padding: 10px 25px;
+  padding: 12px 24px;
   border-radius: 25px;
   text-decoration: none;
   font-weight: 500;
   transition: all 0.3s ease;
   animation: pulse 2.5s infinite;
+  margin: 0.25rem;
+  font-size: 0.9rem;
+  min-height: 44px;
+  min-width: 44px;
+  box-sizing: border-box;
 }
 
 .btn:hover {
@@ -143,11 +176,12 @@ form label {
 }
 
 form input, form select, form textarea {
-  padding: 10px;
+  padding: 12px;
   border: 1px solid #f8c8dc;
   border-radius: 10px;
   background-color: #fff;
   transition: border-color 0.3s;
+  font-size: 16px;
 }
 
 form input:focus, form select:focus, form textarea:focus {
@@ -157,12 +191,13 @@ form input:focus, form select:focus, form textarea:focus {
 
 /* Flash Messages */
 .flash {
-  padding: 10px;
+  padding: 12px;
   margin: 1rem auto;
   border-radius: 10px;
   text-align: center;
   font-weight: 500;
-  width: 60%;
+  width: 90%;
+  max-width: 600px;
 }
 
 .flash.success {
@@ -183,10 +218,140 @@ form input:focus, form select:focus, form textarea:focus {
 /* Footer */
 footer {
   text-align: center;
-  padding: 1rem;
+  padding: 1.5rem;
   background-color: #f8c8dc;
   color: #333;
   margin-top: 3rem;
   border-top: 2px solid #e75480;
   animation: fadeInUp 2s ease-in-out;
+}
+
+/* 📱 Mobile Responsive Styles */
+@media (max-width: 1024px) {
+  .container {
+    width: 95%;
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .buddha-section {
+    padding: 8px;
+    max-width: 100%;
+  }
+  
+  .buddha-img {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .buddha-section q {
+    font-size: 0.8rem;
+  }
+  
+  .header-content {
+    padding: 1rem;
+  }
+  
+  .container {
+    padding: 1.5rem;
+    margin: 1rem auto;
+    border-radius: 15px;
+  }
+  
+  .nav-buttons {
+    gap: 0.3rem;
+  }
+  
+  .nav-buttons .btn {
+    padding: 10px 16px;
+    font-size: 0.8rem;
+    margin: 0.2rem;
+  }
+  
+  .card-img {
+    height: 220px;
+  }
+  
+  /* Reduce animations on mobile for performance */
+  .btn {
+    animation: none;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    font-size: 14px;
+  }
+  
+  .header-content {
+    padding: 0.5rem;
+  }
+  
+  .container {
+    padding: 1rem;
+    width: 95%;
+    margin: 0.5rem auto;
+    border-radius: 10px;
+  }
+  
+  .nav-buttons {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .nav-buttons .btn {
+    padding: 12px 20px;
+    font-size: 0.85rem;
+    width: 80%;
+    max-width: 200px;
+    text-align: center;
+  }
+  
+  .card-img {
+    height: 180px;
+  }
+  
+  .card-title {
+    font-size: 1.3rem;
+  }
+  
+  form input, form select, form textarea {
+    padding: 14px;
+    font-size: 16px;
+  }
+  
+  footer {
+    padding: 1rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 320px) {
+  .container {
+    width: 98%;
+    padding: 0.75rem;
+  }
+  
+  .nav-buttons .btn {
+    width: 90%;
+    padding: 10px 16px;
+    font-size: 0.8rem;
+  }
+  
+  .card-img {
+    height: 150px;
+  }
+}
+
+/* Performance optimization for mobile */
+@media (max-width: 768px) {
+  * {
+    animation-duration: 0.5s !important;
+  }
+  
+  .card, .container {
+    animation: none;
+  }
 }

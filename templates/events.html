@@ -4,16 +4,15 @@
     <div class="container py-5">
         <h2 class="text-center">Wedding Events</h2>
         <div class="row" id="events-row"></div>
-
         <script>
             (function(){
             const baseStatic = "{{ url_for('static', filename='') }}";
             const events = [
-                { title: "Buddha Vandana", img: "img/buddha.jpg", alt: "Buddha", date: "30 November 2025, 11 AM", location: "Jagdishpur, Samastipur (Bihar)" },
-                { title: "Mehendi & Sangeet", img: "img/menhdi.jpg", alt: "Mehendi & Sangeet", date: "3 December 2025, 6 PM", location: "Garden" },
-                { title: "Haldi Ceremony", img: "img/haldi.jpg", alt: "Haldi Ceremony", date: "4 December 2025, 04 PM", location: "Courtyard" },
-                { title: "💍Wedding", img: "img/wedding.jpg", alt: "Wedding", date: "5 December 2025, 11:00 AM", location: "Main Hall" },
-                { title: "Reception", img: "img/reception.jpg", alt: "Reception", date: "10 December 2025, 3:00 PM", location: "Bhandara"}
+                { title: "Buddha Vandana", img: "img/buddha.jpg", alt: "Buddha", date: "30 November 2025, 11 AM", Venue: "Jagdishpur, Samastipur (Bihar)" },
+                { title: "Mehendi & Sangeet", img: "img/menhdi.jpg", alt: "Mehendi & Sangeet", date: "3 December 2025, 6 PM", Venue: "Bhandara (Maharashtra)" },
+                { title: "Haldi Ceremony", img: "img/haldi.jpg", alt: "Haldi Ceremony", date: "4 December 2025, 04 PM", Venue: "Bhandara (Maharashtra)" },
+                { title: "💍Wedding", img: "img/wedding.jpg", alt: "Wedding", date: "5 December 2025, 11:00 AM", Venue: "Bhandara (Maharashtra)" },
+                { title: "Reception", img: "img/reception.jpg", alt: "Reception", date: "10 December 2025, 3:00 PM", Venue: "Bhandara"}
             ];
 
             const row = document.getElementById('events-row');
@@ -24,7 +23,7 @@
                     <div class="card-img-overlay">
                     <h5 class="card-title">${e.title}</h5>
                     <p class="card-text">Date: ${e.date}</p>
-                    <p class="card-text"> Location: ${e.location}</p>
+                    <p class="card-text"> Venue: ${e.Venue}</p>
                     ${e.credit ? `<span>${e.credit}</span>` : ''}
                     </div>
                 </div>
